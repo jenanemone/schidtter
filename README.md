@@ -1,0 +1,4 @@
+- every post has 2 fields: username (and of course you can use anyone's username) & text content
+- anyone can edit ANY of the posts
+- likes / upvote
+- dislikes / downvote
