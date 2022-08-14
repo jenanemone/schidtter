@@ -13,7 +13,9 @@
 .postId {
   display: none;
 }
-
+a {
+  text-decoration: none;
+}
 
 /******************************************
 /* ADDITIONAL STYLES

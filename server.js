@@ -49,31 +49,45 @@ app.post('/addPost', (request, response) => {
 
 
 //adds one like to each post --- 
-app.put(`/addOneUpvote/`, async (request, response) => {
-        console.log(`getting there ${request.params.id}`)
-        db.collection('schidtter').updateOne({ _id: request.params.id,
-         upvote: request.body.upvote},
-                {       
-                        $set: {
-                                upvote: upvote + 1
-                         }
-                })
-                        .then(result => {
-                                console.log("Got some upvote action")
-                        })
-                        .catch(err => console.log(err))
+app.put(`/addOneUpvote`, async (request, response) => {
+        console.log(`getting there ${request.body.info}`)
+        console.log(request.body.upvote)
+         db.collection('schidtter').updateOne({
+                 _id: request.body.info,
+                 downvote: request.body.downvote,
+                 userName: request.body.userName,
+                 userPost: request.body.userPost,
+                 upvote: request.body.upvote
+         }, {
+                 $set: {
+                         upvote: upvote + 1
+                 }
+         }, {
+                 sort: {upvote: -1},
+                 upsert: false
+         })
+                 .then(result => {
+                         console.log("Got some upvote action")
+                         response.json('Upvote be done, yo')
+                 })
+                 .catch(err => console.log(err))
 })
 
 //need to add a downvote here
-app.put("/addOneDownvote/:_id", (request, response) => {
-        db.collection("schidtter").updateOne({
+// app.put("/addOneDownvote/:_id", (request, response) => {
+//         db.collection("schidtter").updateOne({ _id: request.params.id, downvote: request.body.downvote},
+//                 {
+//                         $set: {
+//                                 downvote: downvote + 1
+//                         }
+//                 })
 
-        })
-                .then(result => {
-
-                })
-                .catch()
-})
+//         })
+//                 .then(result => {
+//                         result.redirect('/')
+//                 })
+//                 .catch(err => console.log(err))
+// })
 
 
 

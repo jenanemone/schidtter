@@ -12,8 +12,8 @@
     <main>
         <h1>Schidtter</h1>
         <form action = "/addPost" method = "POST">
-            <input type = "text" id = 'username' name="username">
-            <input type = "textarea" id = "postForText" name="postForText">
+            <input type = "text" id = 'username' name="username" placeholder="username">
+            <input type = "textarea" id = "postForText" name="postForText" placeholder="message">
             <button type = "submit">POST</button>
         </form>
     </main>
@@ -22,19 +22,19 @@
         <section class="userPosts">
             <% for(let i=0; i < info.length; i++) {%>
                 <section class="userPostArea">
-                   
+                    
                     <section class="userPost">
-                        <p>
-                            <%= info[i].userPost %>
-                        </p>
+                        <p><%= info[i].userPost %></p>
                     </section>
                     <section class="userName"><%= info[i].userName %></section>
                     <section class="modify">
-                        
-                        <a href="/addOneUpvote?id=<%= info[i]._id %>" class="upvote">
-                                <i class="fa-solid fa-face-smile"></i>
-                        </a>
+                        <span class="postId"><%= info[i]._id %></span>
+                        <span class="upvote" ><i class="fa-solid fa-face-smile"></i></span>
+                        <span><%= info[i].upvote %></span>
 
+                        <span class="downvote"><i class="fa-solid fa-face-frown-open"></i></span>
+                    <span><%= info[i].downvote %></span>
+                    
                     </section>
                     
                 </section>
