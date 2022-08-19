@@ -53,39 +53,52 @@ app.post('/addPost', (request, response) => {
 app.put(`/addOneUpvote`, async (request, response) => {
         console.log(`getting there ${request.body.info}`)
         console.log(request.body.upvote)
-        const query = {"_id" : ObjectId(`${request.body.info}`)}
-        const update = { $inc: {
-                upvote: 1
-        }}
-          db.collection('schidtter').updateOne(query, update)
-                 .then(result => {
-                         console.log(`Got some upvote action ${request.body.info}`)
-                         response.json('Upvote be done, yo')
-                 })
-                 .catch(err => console.log(err))
-}) 
+        const query = { "_id": ObjectId(`${request.body.info}`) }
+        const update = {
+                $inc: {
+                        upvote: 1
+                }
+        }
+        db.collection('schidtter').updateOne(query, update)
+                .then(result => {
+                        console.log(`Got some upvote action ${request.body.info}`)
+                        response.json('Upvote be done, yo')
+                })
+                .catch(err => console.log(err))
+})
 
 //need to add a downvote here
 app.put(`/addOneDownvote`, async (request, response) => {
         console.log(`getting there ${request.body.info}`)
         console.log(request.body.upvote)
-        const query = {"_id" : ObjectId(`${request.body.info}`)}
-        const update = { $inc: {
-                downvote: 1
-        }}
-          db.collection('schidtter').updateOne(query, update)
-                 .then(result => {
-                         console.log(`Got some upvote action ${request.body.info}`)
-                         response.json('Upvote be done, yo')
-                 })
-                 .catch(err => console.log(err))
-}) 
+        const query = { "_id": ObjectId(`${request.body.info}`) }
+        const update = {
+                $inc: {
+                        downvote: 1
+                }
+        }
+        db.collection('schidtter').updateOne(query, update)
+                .then(result => {
+                        console.log(`Got some downvote action ${request.body.info}`)
+                        response.json('Upvote be done, yo')
+                })
+                .catch(err => console.log(err))
+})
 
 
 
 
 //delete to delete the post
-
+app.delete(`/deleteOnePost`, async (request, response) => {
+        console.log(`getting there ${request.body.info}`)
+        const query = { "_id": ObjectId(`${request.body.info}`) }
+        db.collection('schidtter').deleteOne(query)
+                .then(result => {
+                        console.log(`Got some delete action ${request.body.info}`)
+                        response.json('Upvote be done, yo')
+                })
+                .catch(err => console.log(err))
+})
 
 
 

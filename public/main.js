@@ -1,4 +1,4 @@
-const trash = document.querySelectorAll(".fa-trash-can"),
+const trash = document.querySelectorAll(".delete"),
     upvotes = document.querySelectorAll(".upvote"),
     downvotes = document.querySelectorAll(".downvote");
 
@@ -11,10 +11,13 @@ Array.from(downvotes).forEach(e => {
     e.addEventListener('click',addDownvote)
 })
 
+Array.from(trash).forEach(e => {
+    e.addEventListener('click', deletePost)
+})
+
 async function addUpvote() {
-     const itemId = this.parentNode.childNodes[1].innerText;
-     console.log("about to try",itemId,itemVotes)
-      try {
+    const itemId = this.parentNode.getAttribute('data-id');
+    try {
           const response = await fetch('addOneUpvote', {
               method: 'put',
               headers: { 'Content-Type': 'application/json' },
@@ -34,10 +37,29 @@ async function addUpvote() {
 
 
  async function addDownvote() {
-     const itemId = this.parentNode.childNodes[1].innerText;
+     const itemId = this.parentNode.getAttribute('data-id');
      try {
          const response = await fetch('addOneDownvote', {
              method: 'put',
+             headers: { 'Content-Type': 'application/json' },
+             body: JSON.stringify({
+                 info: itemId
+             })
+         })
+         const data = await response.json()
+         console.log(data)
+         location.reload()
+     }
+     catch (err) {
+         console.log(err)
+     }
+ }
+
+ async function deletePost() {
+    const itemId = this.parentNode.getAttribute('data-id');
+    try {
+         const response = await fetch('deleteOnePost', {
+             method: 'delete',
              headers: { 'Content-Type': 'application/json' },
              body: JSON.stringify({
                  info: itemId
