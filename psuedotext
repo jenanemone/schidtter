@@ -13,6 +13,6 @@ Added data-id attribute in index.ejs
 
 resolved: put methods
 
-TODO: finish delete method
+finished: finish delete method
 
-TODO: access thru data-id
+finished: access thru data-id
