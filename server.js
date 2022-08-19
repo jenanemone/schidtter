@@ -2,7 +2,8 @@
 const express = require('express'),
         app = express(),
         MongoClient = require('mongodb').MongoClient,
-        PORT = process.env.PORT || 8000
+        PORT = process.env.PORT || 8000,
+        ObjectId = require('mongodb').ObjectId
 require('dotenv').config()
 
 //connect to DB
@@ -52,43 +53,33 @@ app.post('/addPost', (request, response) => {
 app.put(`/addOneUpvote`, async (request, response) => {
         console.log(`getting there ${request.body.info}`)
         console.log(request.body.upvote)
-         db.collection('schidtter').updateOne({
-                 _id: request.body.info,
-                 downvote: request.body.downvote,
-                 userName: request.body.userName,
-                 userPost: request.body.userPost,
-                 upvote: request.body.upvote
-         }, {
-                 $set: {
-                         upvote: upvote + 1
-                 }
-         }, {
-                 sort: {upvote: -1},
-                 upsert: false
-         })
+        const query = {"_id" : ObjectId(`${request.body.info}`)}
+        const update = { $inc: {
+                upvote: 1
+        }}
+          db.collection('schidtter').updateOne(query, update)
                  .then(result => {
-                         console.log("Got some upvote action")
+                         console.log(`Got some upvote action ${request.body.info}`)
                          response.json('Upvote be done, yo')
                  })
                  .catch(err => console.log(err))
-})
+}) 
 
 //need to add a downvote here
-// app.put("/addOneDownvote/:_id", (request, response) => {
-//         db.collection("schidtter").updateOne({ _id: request.params.id, downvote: request.body.downvote},
-//                 {
-//                         $set: {
-//                                 downvote: downvote + 1
-//                         }
-//                 })
-
-//         })
-//                 .then(result => {
-//                         result.redirect('/')
-//                 })
-//                 .catch(err => console.log(err))
-// })
-
+app.put(`/addOneDownvote`, async (request, response) => {
+        console.log(`getting there ${request.body.info}`)
+        console.log(request.body.upvote)
+        const query = {"_id" : ObjectId(`${request.body.info}`)}
+        const update = { $inc: {
+                downvote: 1
+        }}
+          db.collection('schidtter').updateOne(query, update)
+                 .then(result => {
+                         console.log(`Got some upvote action ${request.body.info}`)
+                         response.json('Upvote be done, yo')
+                 })
+                 .catch(err => console.log(err))
+}) 
 
 
 

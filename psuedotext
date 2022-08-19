@@ -5,4 +5,4 @@ failed to update upvotes.
 
 Currently- added upvotes to main.js in the fetch causing connection to be refused by the server. removing line 23 from main.js will allow the passing of the ID to the server, but the Db was not updating the database based on merely the ID
 
-working on- passing data to the DB to update the upvote. We got back the 'upvote be done yo' client console log when passing just the ID, but the DB did not update. 
+working on- passing data to the DB to update the upvote. We got back the 'upvote be done yo' client console log when passing just the ID, but the DB did not update. Right before logging off added lines 57-60 (inclusive) to server.js. having issues with the $set in the '/addOneUpvote' app.put method. Do not need lines 66 & 67 as they are not required for the app.put method. 
