@@ -16,3 +16,5 @@ resolved: put methods
 finished: finish delete method
 
 finished: access thru data-id
+
+working on- getting the containers to render correctly and center in the DOM through the EJS using CSS. 
