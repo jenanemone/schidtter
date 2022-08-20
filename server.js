@@ -25,7 +25,7 @@ app.use(express.json())
 
 //render ejs on load
 app.get('/', (request, response) => {
-        db.collection('schidtter').find().toArray()
+        db.collection('schidtter').find().sort({upvote: -1}).toArray()
                 .then(data => {
                         response.render('index.ejs', { info: data })
                 })

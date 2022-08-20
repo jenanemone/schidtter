@@ -10,9 +10,14 @@
 /******************************************
 /* LAYOUT
 /*******************************************/
+:root {
+  --blk: rgb(25, 25, 25);
+  --grn: rgb(5, 176, 5);
+  --wht: rgb(229, 225, 225);
+}
 body {
   background-color: black;
-  color: green;
+  color: var(--grn);
   font-family: "Special Elite",Verdana;
 }
 .inner {
@@ -40,27 +45,33 @@ form > input {
 input {
   /* padding: 0 0 1rem 0; */
   background: repeating-linear-gradient(45deg, darkgray 0 2px, lightgray 2px 4px);
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-end;
+}
+form {
+  width: 30%;
+  min-width: 260px;
 }
 #postForText {
   height: 4rem;
+  overflow-x: clip;
 }
 #postForText::placeholder,
 #username::placeholder {
-  /* text-align: center; */
-  color: green;
+  color: var(--blk);
   margin: 0;
   padding: 0;
+}
+#postForText::placeholder {
+  position: absolute;
+  top: 3px;
+  left: 4px;
 }
 h1 {
   font-size: 4rem;
   margin-bottom: .5rem;
 }
 button {
-  background-color: green;
-  color: black;
+  background-color: var(--grn);
+  color: var(--blk);
   font-family: "Special Elite", Verdana;
   font-size: 1rem;
   line-height: .9rem;
@@ -76,29 +87,26 @@ h4 {
 }
 h6 {
   margin-bottom: .5rem;
-  color: white;
+  color: var(--wht);
 }
 h5 {
-  color: white;
+  color: var(--wht);
 }
 .solidBar {
   width: 90%;
   height: 4px;
-  background-color: green;
+  background-color: var(--grn);
 }
 .warningLabel {
-  /* color: rgb(61, 74, 173); */
-  color: green;
+  color: var(--grn);
   font-family: Verdana, sans-serif;
   font-size: 2.2rem;
-  text-shadow: 2px 2px 2px white;
+  text-shadow: 2px 2px 2px var(--wht);
 }
 .userPost {
-  box-shadow: 1px 1px 2px white;
+  box-shadow: 1px 1px 2px var(--wht);
   width: 90%;
   margin: 3px 1rem;
-  
-  /* padding: .1rem .1rem .3rem .1rem; */
 }
 .userPostArea {
   display: flex;
@@ -109,11 +117,6 @@ h5 {
 .modify {
   width: 100%;
 }
-/* .userPosts {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-} */
 .postContainer {
   width: 90%;
   display: flex;
