@@ -21,3 +21,4 @@ finished: getting the containers to render correctly and center in the DOM throu
 
 09/28/22
 working on: applying MVC paradigm and authentication 
+- changing to Mongoose: added schema for post and comment
