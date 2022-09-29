@@ -107,6 +107,8 @@ h5 {
   box-shadow: 1px 1px 2px var(--wht);
   width: 90%;
   margin: 3px 1rem;
+  line-height: 2ch;
+  letter-spacing: .15ch;
 }
 .userPostArea {
   display: flex;
