@@ -17,4 +17,8 @@ finished: finish delete method
 
 finished: access thru data-id
 
-working on- getting the containers to render correctly and center in the DOM through the EJS using CSS. 
+finished: getting the containers to render correctly and center in the DOM through the EJS using CSS. 
+
+09/28/22
+working on: applying MVC paradigm and authentication 
+- changing to Mongoose: added schema for post and comment
